@@ -11,8 +11,10 @@ const accountRouter = express.Router();
 //3.导入accountRouter所对应的accountController
 const accoutCtrl = require(path.join(__dirname,'../controllers/accountController.js'));
 
-//4.处理请求
+//获取登录页面
 accountRouter.get('/login',accoutCtrl.getLoginPage);
+//处理登录逻辑
+accountRouter.post('/login',accoutCtrl.login);
 
 //5.导出
 module.exports = accountRouter;
