@@ -1,30 +1,14 @@
-//1.导包
+'use strict'
+//导包
 const express = require('express')
 const path = require('path')
-const bodyParser = require('body-parser')
-
-//2.create app
-const app = express();
-
-// parse application/x-www-form-urlencoded 
-app.use(bodyParser.urlencoded({ extended: false }))
-// parse application/json 
-app.use(bodyParser.json())
-
-//deal with static source
-app.use(express.static(path.join(__dirname,'./src/statics')));
-
-//deal router
-const accoutRouter = require(path.join(__dirname,'./src/routes/accountRouter.js'))
-const studentManagerRouter = require(path.join(__dirname,'./src/routes/studentManagerRouter.js'))
-app.use('/account',accoutRouter);
-app.use('/studentmanager',studentManagerRouter);
-
-//start server
-app.listen(3000,'127.0.0.1',(err)=>{
-    if (err) {
-      console.log(err);
-    }
-
-    console.log("start success");
-});
+const app = express()
+const accoutRouter=path.join(__dirname,'src/routes/accountRoute.js')
+app.use('/account',accoutRouter)
+//启动服务器
+app.listen(3333,'127.0.0.1',(err)=>{
+  if (err) {
+    console.log(err)
+  }
+  console.log('服务器启动成功')
+})
